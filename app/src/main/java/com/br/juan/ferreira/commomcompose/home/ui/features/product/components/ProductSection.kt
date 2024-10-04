@@ -15,21 +15,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.br.juan.ferreira.commomcompose.home.R
-import com.br.juan.ferreira.commomcompose.home.domain.product.ProductViewObject
-import java.math.BigDecimal
+import com.br.juan.ferreira.commomcompose.home.domain.product.Product
+import com.br.juan.ferreira.commomcompose.home.domain.product.createProductSectionViewObject
 
 @Preview(
     showBackground = true,
-    showSystemUi = true,
+
 )
 @Composable
 private fun ProductSectionPreview() {
-    ProductSection()
+    val data = createProductSectionViewObject()
+    ProductSection(title = data.title, products = data.products)
 }
 
 @Composable
-fun ProductSection() {
+fun ProductSection(
+    title: String,
+    products: List<Product>,
+) {
     Column {
         Text(
             modifier =
@@ -40,7 +43,7 @@ fun ProductSection() {
                     ),
             fontSize = 20.sp,
             fontWeight = FontWeight(400),
-            text = "Promoções",
+            text = title,
         )
         Row(
             modifier =
@@ -52,27 +55,9 @@ fun ProductSection() {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Spacer(Modifier)
-            ProductItem(
-                ProductViewObject(
-                    name = "Burguer",
-                    price = BigDecimal("26.99"),
-                    image = R.drawable.ic_burguer,
-                ),
-            )
-            ProductItem(
-                ProductViewObject(
-                    name = "Fries",
-                    price = BigDecimal("19.99"),
-                    image = R.drawable.ic_fries,
-                ),
-            )
-            ProductItem(
-                ProductViewObject(
-                    name = "Pizza",
-                    price = BigDecimal("29.99"),
-                    image = R.drawable.ic_pizza,
-                ),
-            )
+            for (p in products) {
+                ProductItem(product = p)
+            }
             Spacer(Modifier)
         }
     }

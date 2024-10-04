@@ -29,7 +29,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.br.juan.ferreira.commomcompose.home.domain.product.ProductViewObject
+import com.br.juan.ferreira.commomcompose.home.domain.product.Product
 import com.br.juan.ferreira.commomcompose.home.domain.product.createProductViewObject
 import com.br.juan.ferreira.commomcompose.home.extensions.toBrazilianCurrency
 
@@ -43,7 +43,7 @@ private fun ProductItemPreview() {
 }
 
 @Composable
-fun ProductItem(product: ProductViewObject) {
+fun ProductItem(product: Product) {
     Surface(
         shape = RoundedCornerShape(15.dp),
         shadowElevation = 4.dp,
